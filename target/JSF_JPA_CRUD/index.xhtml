@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<meta charset="utf-8" name="viewport"
+		content="width=device-width, initial-scale=1"
+		http-equiv="X-UA-Conpatible" />
+	<title>Plantilla Básica JSF</title>
+</h:head>
+<h:body>
+	<h2>
+		<h:outputText value="Lista Clientes"></h:outputText>
+	</h2>
+	<h:form>
+	<h:commandButton action="#{clienteBean.nuevo()}" value="Nuevo Cliente"></h:commandButton>
+	
+		<h:dataTable value="#{clienteBean.obtenerClientes()}" var="cliente"
+			border="1">
+			<h:column>
+				<f:facet name="header">Id</f:facet>
+				<h:outputText value="#{cliente.idcliente}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Nombre</f:facet>
+				<h:outputText value="#{cliente.cli_name}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Direccion</f:facet>
+				<h:outputText value="#{cliente.cli_address}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Email</f:facet>
+				<h:outputText value="#{cliente.cli_email}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Telefono</f:facet>
+				<h:outputText value="#{cliente.cli_phone}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Fecha Registro</f:facet>
+				<h:outputText value="#{cliente.createdAt}"></h:outputText>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Fecha Actualización</f:facet>
+				<h:outputText value="#{cliente.updatedAt}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Editar</f:facet>
+				<h:commandButton action="#{clienteBean.edit(cliente.idcliente)}" value="Editar"></h:commandButton>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Eliminar</f:facet>
+				<h:commandButton action="#{clienteBean.delete(cliente.idcliente)}" value="Eliminar"></h:commandButton>
+			</h:column>
+		</h:dataTable>
+	</h:form>
+</h:body>
+</html>
